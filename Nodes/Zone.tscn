@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0lo7os23d0fj"]
+
+[sub_resource type="GDScript" id="GDScript_wapko"]
+script/source = "extends Node2D
+
+enum ZoneType { GREEN, YELLOW, ORANGE, RED }
+@export var zone_type: ZoneType = ZoneType.GREEN
+
+const TEXTURES = [
+	preload(\"res://Images/green.png\"),
+	preload(\"res://Images/yellow.png\"),
+	preload(\"res://Images/orange.png\"),
+	preload(\"res://Images/red.png\"),
+]
+var tiles: Array = []
+var size: Vector2i
+
+func _grid_to_local(grid_pos: Vector2) -> Vector2:
+	return Vector2(
+		(grid_pos.x - grid_pos.y) * 16,
+		(grid_pos.x + grid_pos.y) * 8
+	)
+	
+func get_bounds() -> Rect2i:
+	if tiles.is_empty():
+		return Rect2i(0, 0, 0, 0)
+	var min_i = INF
+	var max_i = -INF
+	var min_j = INF
+	var max_j = -INF
+
+	for t in tiles:
+		min_i = min(min_i, t.x)
+		max_i = max(max_i, t.x)
+		min_j = min(min_j, t.y)
+		max_j = max(max_j, t.y)
+	return Rect2i(min_i, min_j, max_i - min_i + 1, max_j - min_j + 1)
+	
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func generate_random_shape():
+	for child in get_children():
+		if child is Sprite2D:
+			child.queue_free()
+	tiles.clear()
+	var radius = 3 + randi() % 3  # 3–5
+	for i in range(-radius, radius + 1):
+		for j in range(-radius, radius + 1):
+			if abs(i) + abs(j) <= radius:
+				if abs(i) + abs(j) == radius and randf() < 0.3:
+					continue
+				tiles.append(Vector2(i, j))
+	var tex = TEXTURES[zone_type]
+	for t in tiles:
+		var sprite = Sprite2D.new()
+		sprite.texture = tex
+		sprite.region_enabled = true
+		sprite.position = _grid_to_local(t)
+		sprite.z_index = -int(sprite.position.y)
+		add_child(sprite)
+"
+
+[node name="Zone" type="Node"]
+
+[node name="Node2D" type="Node2D" parent="."]
+script = SubResource("GDScript_wapko")
+
+[node name="Ground" type="TileMapLayer" parent="Node2D"]
+
+[node name="Objects" type="TileMapLayer" parent="Node2D"]

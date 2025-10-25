@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bypkbo3gh4qup"]
+
+[ext_resource type="Script" uid="uid://h8nwn5dqrj4b" path="res://Scripts/SingleGameWorld/single_game.gd" id="1_f4d8m"]
+
+[node name="SingleGame" type="Node2D"]
+script = ExtResource("1_f4d8m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, -2)
+zoom = Vector2(2, 2)

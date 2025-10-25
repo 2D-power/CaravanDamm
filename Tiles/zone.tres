@@ -1,0 +1,53 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://djygok4i4og8o"]
+
+[ext_resource type="Texture2D" uid="uid://yde55kgqnchv" path="res://Tiles/ground_map.png" id="1_lin6k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_410js"]
+texture = ExtResource("1_lin6k")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+
+[resource]
+tile_shape = 1
+tile_layout = 1
+tile_size = Vector2i(32, 16)
+sources/2 = SubResource("TileSetAtlasSource_410js")
