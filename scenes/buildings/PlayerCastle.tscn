@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvq2w6j2jvge8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3yrh"]
+albedo_color = Color(0.5214858, 0.17369324, 0.2609288, 1)
+metallic = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_msenq"]
+material = SubResource("StandardMaterial3D_u3yrh")
+
+[node name="PlayerCastle" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5366842, 0, 0, 0, 1, 0.032593757, 0.5579894, 0.1788392)
+mesh = SubResource("CylinderMesh_msenq")

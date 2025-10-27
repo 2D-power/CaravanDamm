@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cys8qsish57ap"]
+
+[ext_resource type="Script" uid="uid://b1t7b6aeko18r" path="res://scenes/levels/random_map_level.gd" id="1_cyigf"]
+[ext_resource type="PackedScene" uid="uid://clgyv348o6c0y" path="res://scenes/GameManager.tscn" id="2_ai8oh"]
+[ext_resource type="PackedScene" uid="uid://ro4rnxtlxlku" path="res://scenes/camera/MainCamera.tscn" id="3_jfwx5"]
+
+[node name="RandomMapLevel" type="Node3D"]
+script = ExtResource("1_cyigf")
+
+[node name="GameManager" parent="." instance=ExtResource("2_ai8oh")]
+
+[node name="MainCamera" parent="." instance=ExtResource("3_jfwx5")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.011222035, 0.99993724, 0, -0.99993724, 0.011222035, 0, 0, 0)
