@@ -12,6 +12,8 @@ extends Node3D
 @export var allow_rotation: bool = true
 @export var allow_zoom: bool = true
 @export var allow_pan: bool = true
+@export var map_min: Vector2 = Vector2(-50, 0)
+@export var map_max: Vector2 = Vector2(50, 100)
 
 # Camera Nodes
 @onready var camera = $Elevation/Camera3D
@@ -102,6 +104,7 @@ func _process(delta: float) -> void:
 	else:
 		if allow_pan:
 			handle_panning(delta)
+	clamp_position_to_map()
 
 # handling inputs
 func _unhandled_input(event: InputEvent) -> void:
@@ -121,3 +124,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom_level -= zoom_speed
 	elif event.is_action_pressed("zoom_out"):
 		zoom_level += zoom_speed
+
+func clamp_position_to_map() -> void:
+	var pos = global_position
+	pos.x = clamp(pos.x, map_min.x, map_max.x)
+	pos.z = clamp(pos.z, map_min.y, map_max.y)
+	global_position = pos

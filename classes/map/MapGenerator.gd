@@ -3,6 +3,7 @@ extends RefCounted
 
 class ZoneData:
 	var points: PackedVector2Array
+	var forposts: PackedVector2Array
 	var zone_type: int
 	
 const MIN_TRIANGLES_PER_ZONE = 3
@@ -25,6 +26,11 @@ func generate(map_rect: Rect2, num_zones: int) -> Array[ZoneData]:
 			var zd = ZoneData.new()
 			zd.points = cell
 			zd.zone_type = zone_type
+			var fp: PackedVector2Array = []
+			for p in cell:
+				if p.x != map_rect.position.x && p.y != map_rect.position.y && p.x != map_rect.end.x && p.y != map_rect.end.y:
+					fp.append(p)
+			zd.forposts = fp
 			result.append(zd)
 	return result
 
