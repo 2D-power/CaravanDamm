@@ -20,7 +20,7 @@ func generate_random():
 		var zone = preload("res://scenes/zone/Zone.tscn").instantiate()
 		zone.points = data.points
 		zone.zone_type = data.zone_type
-		zone.forposts = data.forposts
+		zone.points = data.forposts
 		add_child(zone)
 		zones.append(zone)
 		navigation_points.append_array(zone.points)
@@ -57,7 +57,7 @@ func _place_player_castle():
 		var object = preload("res://scenes/buildings/PlayerCastle.tscn").instantiate() if zone.zone_type == Zone.ZoneType.PLAYER else preload("res://scenes/buildings/Forpost.tscn").instantiate()
 		object.position = zone.get_center_3d()
 		add_child(object)
-		for fp in zone.forposts:
+		for fp in zone.points:
 			var node_object = preload("res://scenes/buildings/Node.tscn").instantiate()
 			node_object.position =  Vector3(fp.x, 0, fp.y)
 			add_child(node_object)
