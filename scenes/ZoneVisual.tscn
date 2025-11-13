@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbbecs4xyhvos"]
+
+[ext_resource type="Script" uid="uid://dl5x3pg8sm1s0" path="res://scenes/ZoneVisual.gd" id="1_r2sif"]
+
+[node name="ZoneVisual" type="Node3D"]
+script = ExtResource("1_r2sif")

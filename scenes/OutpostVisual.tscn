@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxncuwet8xevp"]
+
+[ext_resource type="Script" uid="uid://c1teogq22ebxn" path="res://scenes/outpost_visual.gd" id="1_4btb6"]
+
+[node name="OutpostVisual" type="Node3D"]
+script = ExtResource("1_4btb6")
